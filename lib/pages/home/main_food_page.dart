@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:food_delivery/home/food_page_body.dart';
+import 'package:food_delivery/pages/home/food_page_body.dart';
 import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgests/big_text.dart';
 import 'package:food_delivery/widgests/small_text.dart';
 
@@ -22,8 +23,10 @@ class _MainFoodPageState extends State<MainFoodPage> {
         children: [
           Container(
             child: Container(
-              margin: EdgeInsets.only(top: 45, bottom: 15),
-              padding: EdgeInsets.only(left: 20, right: 20),
+              margin: EdgeInsets.only(
+                  top: Dimensions.heigth45, bottom: Dimensions.heigth15),
+              padding: EdgeInsets.only(
+                  left: Dimensions.width20, right: Dimensions.width20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -40,11 +43,12 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   ),
                   Center(
                       child: Container(
-                    width: 45,
-                    height: 45,
-                    child: Icon(Icons.search, color: Colors.white),
+                    width: Dimensions.heigth45,
+                    height: Dimensions.heigth45,
+                    child: Icon(Icons.search,
+                        color: Colors.white, size: Dimensions.IconSize24),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(Dimensions.radius15),
                       color: AppColors.mainColor,
                     ),
                   ))
@@ -52,7 +56,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
-          FoodPageBody()
+          //shoing the body
+          Expanded(
+              child: SingleChildScrollView(
+            child: FoodPageBody(),
+          )),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgests/small_text.dart';
 
 class IconAndTextWidget extends StatelessWidget {
@@ -19,12 +20,20 @@ class IconAndTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Icon(icon, color: iconColor),
-      SizedBox(
-        width: 5,
-      ),
-      SmallText(text: text),
-    ]);
+    return Row(
+      children: [
+        Icon(
+          icon,
+          color: iconColor,
+          size: Dimensions.IconSize24,
+        ),
+        SizedBox(
+          width: 5,
+        ),
+        SmallText(
+          text: text,
+        ),
+      ],
+    );
   }
 }
