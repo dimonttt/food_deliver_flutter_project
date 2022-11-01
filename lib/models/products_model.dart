@@ -5,12 +5,13 @@ class Product {
   late List<ProductModel> _products;
   List<ProductModel> get products => _products;
 
-  Product(
-      {required totalSize,
-      required typeId,
-      required offset,
-      required products}) {
-    this._totalSize = totalSize;
+  Product({
+    required totalSize,
+    required typeId,
+    required offset,
+    required products,
+  }) {
+    _totalSize = totalSize;
     this._typeId = typeId;
     this._offset = offset;
     this._products = products;

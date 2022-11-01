@@ -7,11 +7,13 @@ import 'package:get/get.dart';
 
 Future<void> init() async {
   //aoi client
-  Get.lazyPut(() => ApiCLient(appBaseUrl: AppConstans.BASE_URL));
+  Get.lazyPut<ApiCLient>(() => ApiCLient(appBaseUrl: AppConstans.BASE_URL));
 
   //repos
-  Get.lazyPut(() => PopularProductRepo(apiCLient: Get.find()));
+  Get.lazyPut<PopularProductRepo>(
+      () => PopularProductRepo(apiCLient: Get.find()));
 
   //controllers
-  Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
+  Get.lazyPut<PopularProductController>(
+      () => PopularProductController(popularProductRepo: Get.find()));
 }
