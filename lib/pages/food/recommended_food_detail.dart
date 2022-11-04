@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
+import 'package:food_delivery/routes/route_helper.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgests/app_icon.dart';
 import 'package:food_delivery/widgests/big_text.dart';
+import 'package:get/get.dart';
 
 import '../../widgests/exandable_text_widget.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.clear),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                  child: AppIcon(icon: Icons.clear),
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined)
               ],
             ),
@@ -29,7 +43,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 child: Container(
                   child: Center(
                       child: BigText(
-                          size: Dimensions.font26, text: "Chinese Side")),
+                          size: Dimensions.font26, text: product.name!)),
                   width: double.maxFinite,
                   padding: EdgeInsets.only(top: 5, bottom: 10),
                   decoration: BoxDecoration(
@@ -42,8 +56,8 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/food0.png",
+              background: Image.network(
+                AppConstans.BASE_URL + AppConstans.UPLOAD_URL + product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -53,9 +67,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  child: ExpandbleTextWidget(
-                      text:
-                          "Chinese cuisine is one of my favourites. I know that it’s rather old and full of authentic traditions. Over the time there were added some foreign ingredients, but the core of the cuisine remained unchanged. Perhaps the most famous Chinese dishes include fried rice, sweet-and-sour chicken, Peking duck and turtle soup. Chinese tea is also rather popular and full of useful features. One of the basic principles of Chinese food is that it should consist of small pieces. Hence the two culinary secrets include the right cut and proper roasting. All in all there are more than thirty ways of cooking there. Food can be quick fried, fried in deep oil layer, cooked in water, vinegar or syrup, fried on low heat, stewed. One of my favourite dishes is the sweet-and-sour chicken. In my opinion, this dish has a very tender taste and I could eat it for lunch, dinner and breakfast. It’s worth mentioning that Chinese people appreciate not only the taste of the dish they prepare, but also the color, aroma and overall appearance. That’s why when we eat Chinese, we get aesthetic pleasure. In fact, it’s not a secret that most Chinese dishes are eaten with two chopsticks. It is rather convenient when you are used to them. For example, my mum can’t hold them properly, so she prefers ordinary fork and knife instead. As for me, I have recently learned how to use them, which is why I enjoy eating with chopsticks very much. For those who try the Chinese for the first time I’d recommend a chicken noodle soup and fortune cookies."),
+                  child: ExpandbleTextWidget(text: product.description!),
                   margin: EdgeInsets.only(
                       left: Dimensions.width20, right: Dimensions.width20),
                 )
@@ -83,7 +95,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     backgroundColor: AppColors.mainColor,
                     icon: Icons.remove),
                 BigText(
-                  text: "\$12.88 " + " X " + " 0 ",
+                  text: "\$ ${product.price!} X  0 ",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),

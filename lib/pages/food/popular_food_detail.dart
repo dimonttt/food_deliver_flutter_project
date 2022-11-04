@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgests/app_column.dart';
 import 'package:food_delivery/widgests/app_icon.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/popular_product_controller.dart';
 import '../../utils/colors.dart';
 import '../../widgests/big_text.dart';
 import '../../widgests/exandable_text_widget.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const PopularFoodDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[pageId];
+    //print("page is id" + pageId.toString());
+    //print("product name is" + product.name.toString());
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -28,7 +36,9 @@ class PopularFoodDetail extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage("assets/image/food0.png"))),
+                      image: NetworkImage(AppConstans.BASE_URL+AppConstans.UPLOAD_URL+product.img!)
+                      ),
+                      ),
             ),
           ),
           //icon widget
@@ -70,7 +80,7 @@ class PopularFoodDetail extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(text: "Chinese Side"),
+                    AppColumn(text: product.name!),
                     SizedBox(
                       height: Dimensions.heigth20,
                     ),
@@ -81,8 +91,7 @@ class PopularFoodDetail extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         child: ExpandbleTextWidget(
-                            text:
-                                "Perhaps the most famous Chinese dishes include fried rice, sweet-and-sour chicken, Peking duck and turtle soup. Chinese tea is also rather popular and full of useful features."),
+                            text: product.description!),
                       ),
                     ),
                   ],
@@ -137,7 +146,7 @@ class PopularFoodDetail extends StatelessWidget {
                   left: Dimensions.width10,
                   right: Dimensions.width10),
               child: BigText(
-                text: "\$10 | Add to cart",
+                text: "\$ ${product.price!} | Add to cart",
                 color: Colors.white,
               ),
               decoration: BoxDecoration(
