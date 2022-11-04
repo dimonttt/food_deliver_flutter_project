@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:food_delivery/widgests/small_text.dart';
 
 import '../utils/colors.dart';
@@ -35,15 +31,15 @@ class AppColumn extends StatelessWidget {
               }),
             ),
             SizedBox(
-              width: 10,
+              width: Dimensions.width10,
             ),
             SmallText(text: "4.7"),
             SizedBox(
-              width: 10,
+              width: Dimensions.width10,
             ),
             SmallText(text: "2345"),
             SizedBox(
-              width: 10,
+              width: Dimensions.width10,
             ),
             SmallText(text: "comments"),
           ],

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "586506448161",
+    "project_id": "deli-a0aee",
+    "storage_bucket": "deli-a0aee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586506448161:android:aca2c9071124cd4f2aa260",
+        "android_client_info": {
+          "package_name": "com.dbestech.food_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586506448161-klqfsl1l48aoi0rasce3c56vksmg7ujt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuVJce5ekbYZ1JfhuxZZR0TH4EQqdij-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586506448161-klqfsl1l48aoi0rasce3c56vksmg7ujt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
