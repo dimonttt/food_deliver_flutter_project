@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:food_delivery/data/repository/popular_product_repo.dart';
 import 'package:food_delivery/models/products_model.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:food_delivery/utils/colors.dart';
+import 'package:get/get.dart';
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
@@ -12,8 +13,10 @@ class PopularProductController extends GetxController {
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
-  int _quantity = 0;
+  int _quantity = 1;
   int get quantity => _quantity;
+  int _inCartItems = 0;
+  int get inCartItems => _inCartItems + _quantity;
 
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepo.getPopularProductList();
@@ -40,13 +43,32 @@ class PopularProductController extends GetxController {
     update();
   }
 
-  int checkQuantity(int quwantity) {
+  int checkQuantity(int quantity) {
     if (quantity < 0) {
+      Get.snackbar(
+        "Item count",
+        "You can not reduce more!",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,
+      );
       return 0;
     } else if (quantity > 20) {
+      Get.snackbar(
+        "Item count",
+        "You can not add more!",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,
+      );
       return 20;
     } else {
       return quantity;
     }
+  }
+
+  void initProduct() {
+    _quantity = 0;
+    _inCartItems = 0;
+    //if exist
+    //get from storage _inCartItems=3
   }
 }
