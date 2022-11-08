@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/data/repository/popular_product_repo.dart';
+import 'package:food_delivery/models/cart_model.dart';
 import 'package:food_delivery/models/products_model.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:get/get.dart';
@@ -34,7 +35,7 @@ class PopularProductController extends GetxController {
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
       _quantity = checkQuantity(_quantity + 1);
-      print("number of items " + _quantity.toString());
+      //print("number of items " + _quantity.toString());
     } else {
       _quantity = checkQuantity(_quantity - 1);
     }
@@ -49,6 +50,10 @@ class PopularProductController extends GetxController {
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );
+      if (_inCartItems > 0) {
+        _quantity = -_inCartItems;
+        return _quantity;
+      }
       return 0;
     } else if ((_inCartItems + quantity) > 20) {
       Get.snackbar(
@@ -95,5 +100,9 @@ class PopularProductController extends GetxController {
 
   int get totalItems {
     return _cart.totalItems;
+  }
+
+  List<CartModel> get getItems {
+    return _cart.getItems;
   }
 }

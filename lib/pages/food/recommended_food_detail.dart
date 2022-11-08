@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
+import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -41,39 +42,44 @@ class RecommendedFoodDetail extends StatelessWidget {
                 ),
                 //AppIcon(icon: Icons.shopping_cart_outlined)
                 GetBuilder<PopularProductController>(
-                      builder: (controller) {
-                        return Stack(
-                          children: [
-                            AppIcon(icon: Icons.shopping_cart_outlined),
-                            Get.find<PopularProductController>().totalItems >= 1
-                                ? Positioned(
-                                    right: 0,
-                                    top: 0,
-                                    child: AppIcon(
-                                      icon: Icons.circle,
-                                      size: 20,
-                                      iconColor: Colors.transparent,
-                                      backgroundColor: AppColors.mainColor,
-                                    ),
-                                  )
-                                : Container(),
-                            Get.find<PopularProductController>().totalItems >= 1
-                                ? Positioned(
-                                    right: 7,
-                                    top: 3,
-                                    child: BigText(
-                                      text: Get.find<PopularProductController>()
-                                          .totalItems
-                                          .toString(),
-                                      size: 12,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                : Container(),
-                          ],
-                        );
-                      },
-                    )
+                  builder: (controller) {
+                    return Stack(
+                      children: [
+                        AppIcon(icon: Icons.shopping_cart_outlined),
+                        Get.find<PopularProductController>().totalItems >= 1
+                            ? Positioned(
+                                right: 0,
+                                top: 0,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => CartPage());
+                                  },
+                                  child: AppIcon(
+                                    icon: Icons.circle,
+                                    size: 20,
+                                    iconColor: Colors.transparent,
+                                    backgroundColor: AppColors.mainColor,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        Get.find<PopularProductController>().totalItems >= 1
+                            ? Positioned(
+                                right: 7,
+                                top: 3,
+                                child: BigText(
+                                  text: Get.find<PopularProductController>()
+                                      .totalItems
+                                      .toString(),
+                                  size: 12,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Container(),
+                      ],
+                    );
+                  },
+                )
               ],
             ),
             bottom: PreferredSize(
