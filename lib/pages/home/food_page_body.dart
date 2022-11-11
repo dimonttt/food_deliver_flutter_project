@@ -52,17 +52,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ? SizedBox(
                   //color: Colors.redAccent,
                   height: Dimensions.pageView,
-                  
-                    
-                    child: PageView.builder(
-                      controller: pageController,
-                      itemCount: popularProducts.popularProductList.length,
-                      itemBuilder: (context, position) {
-                        return _buildPageItem(position,
-                            popularProducts.popularProductList[position]);
-                      },
-                    ),
-                  
+
+                  child: PageView.builder(
+                    controller: pageController,
+                    itemCount: popularProducts.popularProductList.length,
+                    itemBuilder: (context, position) {
+                      return _buildPageItem(position,
+                          popularProducts.popularProductList[position]);
+                    },
+                  ),
                 )
               : CircularProgressIndicator(
                   color: AppColors.mainColor,
@@ -255,9 +253,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           //showing the header
           GestureDetector(
             onTap: () {
-
-               Get.toNamed(RouteHelper.getPopularFood(index));
-               },       
+              Get.toNamed(RouteHelper.getPopularFood(index));
+            },
             child: Container(
               height: Dimensions.pageViewContainer,
               margin: EdgeInsets.only(
