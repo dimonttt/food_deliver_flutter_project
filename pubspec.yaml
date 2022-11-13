@@ -33,6 +33,7 @@ dependencies:
   dots_indicator: ^2.1.0
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
+  shared_preferences: ^2.0.11
 
 
 
