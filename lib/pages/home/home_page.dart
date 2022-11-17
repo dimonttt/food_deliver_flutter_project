@@ -4,6 +4,8 @@ import 'package:food_delivery/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:flutter/src/material/bottom_navigation_bar.dart';
 
+import '../cart/cart_history.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -15,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     MainFoodPage(),
-    Container(child: Center(child: Text("Next page"))),
+    CartHistory(),
     Container(child: Center(child: Text("Next next page"))),
     Container(child: Center(child: Text("Next next next page"))),
   ];
