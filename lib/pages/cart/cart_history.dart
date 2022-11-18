@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/models/cart_model.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -160,7 +163,7 @@ class CartHistory extends StatelessWidget {
                                           GestureDetector(
                                             onTap: () {
                                               var orderTime =
-                                                  cartItemsPerOrderToList();
+                                                  cartOrderTimeToList();
                                               Map<int, CartModel> moreOrder =
                                                   {};
                                               for (int j = 0;
@@ -169,9 +172,20 @@ class CartHistory extends StatelessWidget {
                                                 if (getCartHistoryList[j]
                                                         .time ==
                                                     orderTime[i]) {
-                                                  
+                                                  moreOrder.putIfAbsent(
+                                                      getCartHistoryList[j].id!,
+                                                      () => CartModel.fromJson(
+                                                          jsonDecode(jsonEncode(
+                                                              getCartHistoryList[
+                                                                  j]))));
                                                 }
                                               }
+                                              Get.find<CartController>()
+                                                  .setItems = moreOrder;
+                                              Get.find<CartController>()
+                                                  .addToCartList();
+                                              Get.toNamed(
+                                                  RouteHelper.getCartPage());
                                             },
                                             child: Container(
                                               padding: EdgeInsets.symmetric(
