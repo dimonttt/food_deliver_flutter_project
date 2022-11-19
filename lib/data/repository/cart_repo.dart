@@ -13,10 +13,12 @@ class CartRepo {
   List<String> cartHistory = [];
 
   void addToCartList(List<CartModel> cartList) {
-    //sharedPreferences.remove(AppConstans.CART_LIST);
-    //sharedPreferences.remove(AppConstans.CART_HISTORY_LIST);
+    // sharedPreferences.remove(AppConstans.CART_LIST);
+    // sharedPreferences.remove(AppConstans.CART_HISTORY_LIST);
+    // return;
     var time = DateTime.now().toString();
     cart = [];
+
     //convert objects to string because sharedpreference only accepts string
 
     cartList.forEach((element) {
@@ -67,10 +69,10 @@ class CartRepo {
     sharedPreferences.setStringList(AppConstans.CART_HISTORY_LIST, cartHistory);
     print("The lenght of history list is " +
         getCartHistoryList().length.toString());
-    
-    for(int i=0; i<getCartHistoryList().length;i++){
+
+    for (int i = 0; i < getCartHistoryList().length; i++) {
       print("The lenght of history list is " +
-        getCartHistoryList()[i].time.toString());
+          getCartHistoryList()[i].time.toString());
     }
   }
 
