@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/account/account_page.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/colors.dart';
-import 'package:get/get.dart';
-import 'package:flutter/src/material/bottom_navigation_bar.dart';
 
 import '../cart/cart_history.dart';
 
@@ -18,13 +17,13 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     MainFoodPage(),
     CartHistory(),
-    Container(child: Center(child: Text("Next next page"))),
-    Container(child: Center(child: Text("Next next next page"))),
+    AccountPage(),
+    //Container(child: Center(child: Text("Next next next page"))),
   ];
 
   void onTapNav(int index) {
     setState(() {
-          _selectedIndex = index;
+      _selectedIndex = index;
     });
   }
 
