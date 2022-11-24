@@ -14,8 +14,9 @@ class AuthRepo {
         AppConstans.REGISTRATION_URI, signUpBody.toJson());
   }
 
-  saveUserToken(String token) {
+  saveUserToken(String token) async {
     apiClient.token = token;
-    
+    apiClient.updateHeaders(token);
+    return await sharedPreferences.setString(AppConstans.TOKEN, token);
   }
 }
