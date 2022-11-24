@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
 
      return GetBuilder<PopularProductController>(builder: (_) {
       return GetBuilder<RecommendedProductController>(builder: (_) {
-        return const GetMaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          home: SignInPage(),
+          //home: SignInPage(),
           //initialRoute: RouteHelper.getInitial(),
-          //getPages: RouteHelper.routes,
+          getPages: RouteHelper.routes,
         );
       });
      });

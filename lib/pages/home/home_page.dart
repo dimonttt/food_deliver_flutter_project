@@ -4,6 +4,7 @@ import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/colors.dart';
 
+import '../auth/sign_in_page.dart';
 import '../cart/cart_history.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     MainFoodPage(),
     CartHistory(),
-    SignUpPage(),
+    SignInPage(),
     //AccountPage(),
     //Container(child: Center(child: Text("Next next next page"))),
   ];
