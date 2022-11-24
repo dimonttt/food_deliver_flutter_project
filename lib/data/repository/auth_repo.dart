@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:food_delivery/models/signup_body_model.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:get/get_connect/http/src/response/response.dart';

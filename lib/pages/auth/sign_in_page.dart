@@ -1,8 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery/base/custom_loader.dart';
 import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
@@ -12,7 +9,6 @@ import 'package:food_delivery/widgests/big_text.dart';
 import 'package:get/get.dart';
 import '../../base/show_custom_snackbar.dart';
 import '../../controllers/auth_controller.dart';
-import '../../models/signup_body_model.dart';
 import '../../utils/colors.dart';
 
 class SignInPage extends StatelessWidget {
@@ -22,7 +18,10 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
+    
+    
     void _login(AuthController authController) {
+      
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
 
@@ -38,10 +37,12 @@ class SignInPage extends StatelessWidget {
         showCustomSnackBar("Password can not be less than six characters",
             title: "Password");
       } else {
+
+
         authController.login(email, password).then((status) {
           if (status.isSuccess) {
-            //Get.toNamed(RouteHelper.getInitial());
-            Get.toNamed(RouteHelper.getCartPage());
+            Get.toNamed(RouteHelper.getInitial());
+            //Get.toNamed(RouteHelper.getCartPage());
           } else {
             showCustomSnackBar(status.message);
           }
@@ -64,7 +65,7 @@ class SignInPage extends StatelessWidget {
                         //app logo
                         Container(
                           height: Dimensions.screenHeigth * 0.25,
-                          child: Center(
+                          child: const Center(
                             child: CircleAvatar(
                               backgroundColor: Colors.white,
                               radius: 80,

@@ -43,7 +43,7 @@ class ApiCLient extends GetConnect implements GetxService {
         body,
         headers: _mainHeaders,
       );
-      print(response.toString());
+      //print(response.toString());
       return response;
     } catch (e) {
       print(e.toString());

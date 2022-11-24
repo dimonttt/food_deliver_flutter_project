@@ -1,8 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery/base/custom_loader.dart';
 import 'package:food_delivery/base/show_custom_snackbar.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
@@ -51,7 +48,10 @@ class SignUpPage extends StatelessWidget {
             title: "Password");
       } else {
         SignUpBody signUpBody = SignUpBody(
-            name: name, phone: phone, email: email, password: password);
+            name: name, 
+            phone: phone, 
+            email: email, 
+            password: password);
         authController.registration(signUpBody).then((status) {
           if (status.isSuccess) {
             print("Success registration");
