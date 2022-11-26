@@ -18,10 +18,8 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
-    
-    
+
     void _login(AuthController authController) {
-      
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
 
@@ -37,12 +35,10 @@ class SignInPage extends StatelessWidget {
         showCustomSnackBar("Password can not be less than six characters",
             title: "Password");
       } else {
-
-
         authController.login(email, password).then((status) {
           if (status.isSuccess) {
             Get.toNamed(RouteHelper.getInitial());
-            //Get.toNamed(RouteHelper.getCartPage());
+            //print("Success login");
           } else {
             showCustomSnackBar(status.message);
           }
@@ -179,7 +175,7 @@ class SignInPage extends StatelessWidget {
                       ],
                     ),
                   )
-                : CustomLoader();
+                : const CustomLoader();
           },
         ));
   }

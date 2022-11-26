@@ -26,6 +26,7 @@ class SignUpPage extends StatelessWidget {
     // ];
 
     void _registration(AuthController authController) {
+      var authController = Get.find<AuthController>();
       String name = nameController.text.trim();
       String phone = phoneController.text.trim();
       String email = emailController.text.trim();
@@ -48,10 +49,7 @@ class SignUpPage extends StatelessWidget {
             title: "Password");
       } else {
         SignUpBody signUpBody = SignUpBody(
-            name: name, 
-            phone: phone, 
-            email: email, 
-            password: password);
+            name: name, phone: phone, email: email, password: password);
         authController.registration(signUpBody).then((status) {
           if (status.isSuccess) {
             print("Success registration");

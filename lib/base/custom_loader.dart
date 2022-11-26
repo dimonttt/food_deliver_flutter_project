@@ -13,7 +13,7 @@ class CustomLoader extends StatelessWidget {
         height: Dimensions.heigth20 * 5,
         width: Dimensions.heigth20 * 5,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Dimensions.heigth20 * 5/2),
+            borderRadius: BorderRadius.circular(Dimensions.heigth20 * 5 / 2),
             color: AppColors.mainColor),
         alignment: Alignment.center,
         child: CircularProgressIndicator(color: Colors.white),

@@ -14,6 +14,10 @@ class AuthRepo {
         AppConstans.REGISTRATION_URI, signUpBody.toJson());
   }
 
+  bool userLoggedIn() {
+    return sharedPreferences.containsKey(AppConstans.TOKEN);
+  }
+
   Future<String> getUserToken() async {
     return await sharedPreferences.getString(AppConstans.TOKEN) ?? "None";
   }
@@ -36,5 +40,14 @@ class AuthRepo {
     } catch (e) {
       throw e;
     }
+  }
+
+  bool clearSharedData() {
+    sharedPreferences.remove(AppConstans.TOKEN);
+    sharedPreferences.remove(AppConstans.PASSWORD);
+    sharedPreferences.remove(AppConstans.PHONE);
+    apiClient.token = '';
+    apiClient.updateHeaders('');
+    return true;
   }
 }
