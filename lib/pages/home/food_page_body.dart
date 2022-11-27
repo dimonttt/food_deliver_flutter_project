@@ -229,7 +229,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           IconAndTextWidget(
-                                              icon: Icons.circle_sharp,
+                                              icon: Icons.price_change_sharp,
                                               text: recommendedProduct
                                                   .recommendedProductList[index]
                                                   .price

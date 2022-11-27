@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     MainFoodPage(),
-    SignInPage(),
+    //SignInPage(),
     CartHistory(),
     AccountPage(),
     
@@ -45,10 +45,10 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         onTap: onTapNav,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'history',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.home_outlined),
+          //   label: 'history',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.archive),
             label: 'home',
