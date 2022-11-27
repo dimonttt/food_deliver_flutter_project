@@ -7,8 +7,8 @@ import '../data/repository/recommend_product_repo.dart';
 class RecommendedProductController extends GetxController {
   final RecommendedProductRepo recommendedProductRepo;
   RecommendedProductController({required this.recommendedProductRepo});
-  List<dynamic> _recommendedProductList = [];
-  List<dynamic> get recommendedProductList => _recommendedProductList;
+  List<ProductModel> _recommendedProductList = [];
+  List<ProductModel> get recommendedProductList => _recommendedProductList;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;

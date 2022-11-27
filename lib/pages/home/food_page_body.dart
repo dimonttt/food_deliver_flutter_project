@@ -26,6 +26,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   final double _scaleFactor = 0.8;
   final double _heigth = Dimensions.pageViewContainer;
 
+  bool isSort = false;
+  List<RecommendedProductController> items = [];
+
   @override
   void initState() {
     super.initState();
@@ -107,11 +110,34 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               SizedBox(
                 width: Dimensions.width10,
               ),
-              Container(
-                margin: const EdgeInsets.only(bottom: 2),
-                child: SmallText(
-                  text: "Food pairing",
-                ),
+              GestureDetector(
+                onTap: () {
+                  setState(() => isSort = !isSort);
+                  //recommendedProduct.recommendedProductList[index].name!),
+                },
+                child: Container(
+                    margin: const EdgeInsets.only(bottom: 2),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            SmallText(
+                              text: "Sorting",
+                              color: Colors.black54,
+                              size: Dimensions.font20,
+                            ),
+                            isSort
+                                ? Icon(Icons.arrow_drop_down_rounded)
+                                : Icon(Icons.arrow_drop_up_rounded),
+                          ],
+                        )
+                      ],
+                    )
+                    // child: SmallText(
+                    //   text: "Sorting",
+                    //   size: Dimensions.font20,
+                    // ),
+                    ),
               )
             ],
           ),
@@ -119,15 +145,26 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         //recommended food
         //list of food and images
         GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
+          if (recommendedProduct.isLoaded) {
+            recommendedProduct.recommendedProductList.sort((a, b) {
+              return (a.price?.compareTo(b.price ?? 0) ?? 0) *
+                  (isSort ? 1 : -1);
+            });
+          }
           return recommendedProduct.isLoaded
               ? ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: recommendedProduct.recommendedProductList.length,
                   itemBuilder: (context, index) {
+                    //final sortedItems =
+                    //isSort ? recommendedProduct.recommendedProductList.reversed.toList() : recommendedProduct.recommendedProductList;
+
+                    //final item = sortedItems[index];
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getRecommendedFood(index, "home"));
+                        Get.toNamed(
+                            RouteHelper.getRecommendedFood(index, "home"));
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -153,7 +190,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                             .img!)),
                               ),
                             ),
-                            //text cintainer
+                            //text container
                             Expanded(
                               child: Container(
                                 height: Dimensions.ListViewTextContSize,
@@ -193,7 +230,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                         children: [
                                           IconAndTextWidget(
                                               icon: Icons.circle_sharp,
-                                              text: "Normal",
+                                              text: recommendedProduct
+                                                  .recommendedProductList[index]
+                                                  .price
+                                                  .toString(),
                                               iconColor: AppColors.iconColor1),
                                           IconAndTextWidget(
                                               icon: Icons.location_on,
