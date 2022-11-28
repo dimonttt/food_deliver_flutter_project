@@ -127,8 +127,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                               size: Dimensions.font20,
                             ),
                             isSort
-                                ? Icon(Icons.arrow_drop_down_rounded)
-                                : Icon(Icons.arrow_drop_up_rounded),
+                                ? Icon(Icons.arrow_drop_up_rounded)
+                                : Icon(Icons.arrow_drop_down_rounded),
                           ],
                         )
                       ],
@@ -226,7 +226,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                       ),
                                       Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.end,
                                         children: [
                                           IconAndTextWidget(
                                               icon: Icons.price_change_sharp,
@@ -235,14 +235,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                                   .price
                                                   .toString(),
                                               iconColor: AppColors.iconColor1),
-                                          IconAndTextWidget(
-                                              icon: Icons.location_on,
-                                              text: "1.7km",
-                                              iconColor: AppColors.mainColor),
-                                          IconAndTextWidget(
-                                              icon: Icons.access_time_rounded,
-                                              text: "32min",
-                                              iconColor: AppColors.iconColor2)
+                                          // IconAndTextWidget(
+                                          //     icon: Icons.location_on,
+                                          //     text: "km",
+                                          //     iconColor: AppColors.mainColor),
+                                          // IconAndTextWidget(
+                                          //     icon: Icons.access_time_rounded,
+                                          //     text: " 32 min",
+                                          //     iconColor: AppColors.iconColor2)
                                         ],
                                       ),
                                     ],

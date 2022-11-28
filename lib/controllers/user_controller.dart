@@ -25,7 +25,7 @@ class UserController extends GetxController implements GetxService {
       responseModel = ResponseModel(true, "successfully");
     } else {
       responseModel = ResponseModel(false, response.statusText!);
-      _isLoading = true;
+      //_isLoading = true;
     }
     update();
     return responseModel;

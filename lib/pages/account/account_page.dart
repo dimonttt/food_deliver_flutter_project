@@ -120,20 +120,20 @@ class AccountPage extends StatelessWidget {
                                       height: Dimensions.heigth15,
                                     ),
                                     //massage
-                                    AccountWidget(
-                                        appIcon: AppIcon(
-                                          icon: Icons.message_outlined,
-                                          backgroundColor: Colors.redAccent,
-                                          iconColor: Colors.white,
-                                          iconSize: Dimensions.heigth10 * 5 / 2,
-                                          size: Dimensions.heigth10 * 5,
-                                        ),
-                                        bigText: BigText(
-                                          text: "Messages",
-                                        )),
-                                    SizedBox(
-                                      height: Dimensions.heigth15,
-                                    ),
+                                    // AccountWidget(
+                                    //     appIcon: AppIcon(
+                                    //       icon: Icons.message_outlined,
+                                    //       backgroundColor: Colors.redAccent,
+                                    //       iconColor: Colors.white,
+                                    //       iconSize: Dimensions.heigth10 * 5 / 2,
+                                    //       size: Dimensions.heigth10 * 5,
+                                    //     ),
+                                    //     bigText: BigText(
+                                    //       text: "Messages",
+                                    //     )),
+                                    // SizedBox(
+                                    //   height: Dimensions.heigth15,
+                                    // ),
                                     GestureDetector(
                                       onTap: () {
                                         if (Get.find<AuthController>()
